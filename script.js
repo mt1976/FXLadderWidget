@@ -1,3 +1,9 @@
+
+const buy_currency = "USD";
+const sell_currency = "EUR";
+const rfq_amount = 1000000;
+
+
 function test(){
     console.log("test");
     //alert("Hello World");
@@ -61,4 +67,44 @@ function thrombus(){
     ask_Allin.innerHTML = "0.00000000";
     bid_Profit.innerHTML = "0.00000000";
     ask_Profit.innerHTML = "0.00000000";
+    calculate()
 }
+
+
+
+
+
+// fetchung the exchange Rate and Update to DOM
+const calculate = () => {
+   // const currency_one = "EUR";
+    //const currency_two = "USD";
+
+    // window.fetch(`https://v6.exchangerate-api.com/v6/d4e344d882d1d9bb4adc0c70/latest/${buy_currency}`).then(res => res.json()).then(data => {
+    //     console.log(data);
+
+    //     const rate = data.conversion_rates[sell_currency];
+
+    //     ask_Price.innerHTML = `1 ${buy_currency} = ${rate} ${sell_currency}`;
+    //     bid_Price.innerHTML = (rfq_amount * rate).toFixed(2)
+
+
+    // })
+
+    var requestURL = 'https://api.exchangerate.host/latest'; 
+    var request = new XMLHttpRequest(); 
+    request.open('GET', requestURL);
+    request.responseType = 'json';
+    request.send();
+    
+    request.onload = function() {
+      var response = request.response;
+      console.log(response);
+
+        bid_Price.innerHTML = response.rates.USD;
+        bid_Price_1.innerHTML = response.rates.GBP;
+
+    }
+
+
+}
+
