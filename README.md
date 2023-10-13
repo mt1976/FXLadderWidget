@@ -1,2 +1,2 @@
-# margin_widget
+# FXLadderWidget
 FX margin widget
